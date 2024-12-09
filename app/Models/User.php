@@ -22,6 +22,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'nisn',
+        'kelas'
     ];
 
     /**
@@ -45,5 +47,24 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function books()
+    {
+        return $this->belongsToMany(Book::class, 'history')
+                    ->withPivot('read_at')      // Tambahkan kolom pivot read_at untuk tracking waktu
+                    ->withTimestamps();         // Menyimpan waktu created_at dan updated_at
+    }
+
+    // Method untuk menambahkan buku ke history user
+    public function addToHistory(Book $book)
+    {
+        return $this->books()->attach($book->id, ['read_at' => now()]);
+    }
+
+    // Method untuk mendapatkan history buku yang dibaca
+    public function readingHistory()
+    {
+        return $this->books()->orderByPivot('read_at', 'desc');  // Mendapatkan buku dalam urutan waktu terbaru
     }
 }

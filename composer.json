@@ -6,11 +6,17 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "barryvdh/laravel-dompdf": "^3.0",
         "laravel/framework": "^11.9",
+        "laravel/socialite": "^5.16",
         "laravel/tinker": "^2.9",
-        "spatie/laravel-permission": "^6.9"
+        "phpoffice/phpspreadsheet": "^3.3",
+        "spatie/laravel-permission": "^6.9",
+        "twbs/bootstrap": "5.3.3",
+        "twbs/bootstrap-icons": "^1.11"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.14",
         "fakerphp/faker": "^1.23",
         "laravel/breeze": "^2.2",
         "laravel/pail": "^1.1",
